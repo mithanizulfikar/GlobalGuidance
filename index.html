@@ -60,6 +60,14 @@
     em,h1 em,h2 em,h3 em,.process-note,.no-pressure{font-style:normal!important;font-weight:inherit}
     h1,h2,h3{letter-spacing:-.02em}
     .hero .hero-copy h1{letter-spacing:-.025em}
+
+    /* logo, one-line headings, Australia photo */
+    .footer-brand img{background:transparent;padding:0;filter:brightness(0) invert(1)}
+    #about h2{font-size:clamp(22px,2.2vw,33px);white-space:nowrap}
+    #stories .section-head{max-width:none}
+    #stories h2{font-size:clamp(22px,2.9vw,40px);white-space:nowrap}
+    @media(max-width:700px){#about h2,#stories h2{white-space:normal;font-size:28px}}
+    .australia{background-image:url("assets/australia.jpg"),url("https://unsplash.com/photos/3HuDT9sC29U/download?force=true&w=1100"),url("https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d4?auto=format&fit=crop&w=1100&q=82")}
   </style>
 </head>
 <body>
@@ -80,7 +88,7 @@
 <header class="site-header" id="top">
   <div class="container nav-wrap">
     <a class="brand" href="#top" aria-label="Global Guidance Hub">
-      <img src="assets/global-guidance-hub-logo.jpeg" alt="Global Guidance Hub logo">
+      <img src="assets/global-guidance-hub-logo.png" alt="Global Guidance Hub logo">
     </a>
 
     <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
@@ -369,7 +377,7 @@
         </div>
 
         <button class="button button-primary" type="submit">
-          Show Me My Options <span>→</span>
+          Submit <span>→</span>
         </button>
 
         <p class="form-message" id="profileMessage" role="status"></p>
@@ -576,7 +584,7 @@
     <div class="container">
       <div class="section-head reveal">
         <p class="eyebrow eyebrow-blue">STUDENT STORIES</p>
-        <h2>Every student arrives with<br><em>a different question.</em></h2>
+        <h2>Every student arrives with a different question.</h2>
         <p>Some are deciding between universities.</p>
         <p>Some are unsure which country makes sense.</p>
         <p>Some know what they want to study but not where.</p>
@@ -622,7 +630,7 @@
     <div class="about-content">
       <div class="content-inner reveal">
         <p class="eyebrow eyebrow-light">ABOUT GLOBAL GUIDANCE HUB</p>
-        <h2>Two mentors.<br><em>One shared purpose.</em></h2>
+        <h2>Two mentors. One shared purpose.</h2>
         <p>
           Global Guidance Hub was built around a simple belief: good university guidance should be personal.
         </p>
@@ -678,7 +686,7 @@
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <img src="assets/global-guidance-hub-logo.jpeg" alt="Global Guidance Hub logo">
+      <img src="assets/global-guidance-hub-logo.png" alt="Global Guidance Hub logo">
       <p>Guidance for what comes next.</p>
     </div>
 
@@ -735,9 +743,11 @@
 /* ---------- Form: budget brackets + Google Sheet submission ---------- */
 
 // Paste your Google Apps Script Web App URL here (see google-apps-script.gs).
-// While empty, the form falls back to opening an email to the address below.
+// Optional: also add each query to the Google Sheet.
 var GGH_FORM_ENDPOINT = '';
 var GGH_FALLBACK_EMAIL = 'globalguidancehub@gmail.com';
+// Every submission is emailed to the address below (via FormSubmit; first submission needs a one-time email confirmation).
+var GGH_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/' + GGH_FALLBACK_EMAIL;
 
 var GGH_BUDGETS = {
   'United States':  ['Below $25,000', '$25,000–$35,000', '$35,001–$50,000', 'Above $50,000'],
@@ -776,26 +786,37 @@ var GGH_BUDGETS = {
     new FormData(form).forEach(function (v, k) { data[k] = String(v).trim(); });
     if (data.website) return; // honeypot
 
-    if (!GGH_FORM_ENDPOINT) {
-      var body = Object.keys(data).filter(function (k) { return k !== 'website'; })
-        .map(function (k) { return k + ': ' + data[k]; }).join('\n');
-      window.location.href = 'mailto:' + GGH_FALLBACK_EMAIL +
-        '?subject=' + encodeURIComponent('Website enquiry — ' + data.fullName) +
-        '&body=' + encodeURIComponent(body);
-      msg.textContent = 'Thank you — your email app should open with your details ready to send.';
-      return;
+    btn.disabled = true;
+    msg.textContent = 'Submitting…';
+
+    // Optional copy into the Google Sheet (only if an Apps Script URL is set)
+    if (GGH_FORM_ENDPOINT) {
+      fetch(GGH_FORM_ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(data) }).catch(function () {});
     }
 
-    btn.disabled = true;
-    msg.textContent = 'Sending…';
-    fetch(GGH_FORM_ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(data) })
+    // Email to the team
+    var mail = {
+      _subject: 'New website enquiry — ' + data.fullName,
+      _template: 'table',
+      'Full Name': data.fullName, 'Phone Number': data.phone, 'Email Address': data.email,
+      'City of Residence': data.city, 'Current Level of Education': data.level,
+      'Institution': data.institution, 'CGPA': data.cgpa, 'Completion Year': data.completionYear,
+      'Country of Interest': data.country, 'Budget': data.budget, 'Program Interested In': data.program,
+      _replyto: data.email
+    };
+    fetch(GGH_EMAIL_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(mail)
+    })
+      .then(function (r) { if (!r.ok) throw new Error('failed'); return r.json(); })
       .then(function () {
-        msg.textContent = 'Thank you — a mentor will be in touch with you soon.';
+        msg.textContent = 'Thank you — your query has been submitted. Our team will contact you soon.';
         form.reset();
         budget.innerHTML = '<option value="">Choose a country first</option>';
       })
       .catch(function () {
-        msg.textContent = 'Something went wrong. Please try again or email ' + GGH_FALLBACK_EMAIL + '.';
+        msg.textContent = 'Sorry, we could not send your query. Please WhatsApp us on +92 371-2136262 or email ' + GGH_FALLBACK_EMAIL + '.';
       })
       .then(function () { btn.disabled = false; });
   }, true);
