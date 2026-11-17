@@ -7,7 +7,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Global Guidance Hub | University Decisions Are Personal">
   <meta property="og:description" content="Thoughtful educational guidance, academic planning and university exploration.">
-  <meta property="og:url" content="https://mithanizulfikar.github.io/GlobalGuidance/">
+  <meta property="og:url" content="https://mithanizulfikar.github.io/GlobalGuidance/index.html">
   <meta property="og:image" content="https://mithanizulfikar.github.io/GlobalGuidance/assets/global-guidance-hub-logo.png">
   <meta name="theme-color" content="#0b2948">
   <title>Global Guidance Hub | University Decisions Are Personal</title>
@@ -132,6 +132,41 @@
       .wa-float{left:14px;bottom:16px;padding:12px 16px;font-size:13px}
     }
 
+    /* ===== multi-page: inner-page banner, active menu item ===== */
+    .page-hero{min-height:0}
+    .page-hero .hero-inner{min-height:0;padding:64px 0}
+    .page-hero .hero-copy h1{margin-bottom:0!important}
+    .main-nav a[aria-current="page"]:not(.nav-button){color:var(--blue);box-shadow:inset 0 -2px 0 var(--blue)}
+    .intro-text .button{margin:8px 8px 0 0}
+
+    /* ===== welcome popup (home page) ===== */
+    .welcome-pop{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(4,20,36,.74);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+    .welcome-pop.show{opacity:1;visibility:visible}
+    .welcome-card{position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(860px,100%);max-height:92vh;overflow:auto;background:#fff;box-shadow:0 40px 100px rgba(0,0,0,.45);transform:translateY(24px) scale(.98);transition:transform .4s}
+    .welcome-pop.show .welcome-card{transform:none}
+    .welcome-img{min-height:430px;background:linear-gradient(rgba(7,29,50,.2),rgba(7,29,50,.55)),url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1100&q=85") center/cover}
+    .welcome-text{display:flex;flex-direction:column;justify-content:center;padding:46px 40px}
+    .welcome-card h2{white-space:normal;font-size:clamp(24px,2.6vw,30px);line-height:1.2;margin-bottom:14px}
+    .welcome-text p+p{margin-top:10px}
+    .welcome-lead{margin-bottom:14px;font-size:20px;font-weight:600;color:var(--blue)}
+    .welcome-text p{font-size:16px;line-height:1.7;color:var(--muted)}
+    .welcome-text .welcome-lead{color:var(--blue)}
+    .welcome-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .welcome-close{position:absolute;top:10px;right:12px;z-index:3;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.95);font-size:24px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+    @media(max-width:680px){.welcome-card{grid-template-columns:1fr}.welcome-img{min-height:170px}.welcome-text{padding:28px 24px}}
+
+    /* ===== dropdown menus; banner title replaces the first section's small label ===== */
+    .nav-drop{position:relative;display:inline-flex}
+    .drop-menu{position:absolute;top:100%;left:-14px;z-index:120;display:none;min-width:290px;padding:10px;background:#fff;border:1px solid var(--line);box-shadow:0 22px 50px rgba(11,41,72,.16)}
+    .drop-menu a{display:block;padding:11px 14px;white-space:nowrap}
+    .nav-drop:hover .drop-menu,.nav-drop:focus-within .drop-menu{display:block}
+    .page-hero + section .eyebrow{display:none}
+    @media(max-width:960px){.nav-drop{display:block}.drop-menu{position:static;display:block;min-width:0;padding:0 0 0 14px;border:0;box-shadow:none}.drop-menu a{padding:8px 0}}
+
+    /* WhatsApp button appears after the visitor starts scrolling (so it never covers the hero buttons) */
+    .wa-float{opacity:0;pointer-events:none;transition:opacity .3s,transform .2s}
+    .wa-float.show{opacity:1;pointer-events:auto}
+
   </style>
 </head>
 <body>
@@ -143,16 +178,15 @@
 
 <header class="site-header" id="top">
   <div class="container nav-wrap">
-    <a class="brand" href="#top" aria-label="Global Guidance Hub"><img src="assets/global-guidance-hub-logo.png" alt="Global Guidance Hub logo"></a>
+    <a class="brand" href="index.html" aria-label="Global Guidance Hub"><img src="assets/global-guidance-hub-logo.png" alt="Global Guidance Hub logo"></a>
     <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-      <a href="#explore">Explore</a>
-      <a href="#how-we-guide">How We Guide</a>
-      <a href="#destinations">Destinations</a>
-      <a href="#stories">Student Journeys</a>
-      <a href="#guidance">Guidance</a>
-      <a href="#about">About</a>
-      <a class="nav-button" href="#contact">Talk to a Mentor</a>
+      <a href="index.html" aria-current="page">Home</a>
+      <div class="nav-drop"><a href="how-we-guide.html">How We Guide</a><div class="drop-menu"><a href="how-we-guide.html">How We Guide You</a><a href="journey.html">Where Are You in Your Journey?</a></div></div>
+      <div class="nav-drop"><a href="areas.html">Guidance</a><div class="drop-menu"><a href="areas.html">Areas of Guidance</a><a href="universities.html">Choosing the Right University</a><a href="early-planning.html">Early Academic Planning</a><a href="applications.html">Applications and Admissions</a><a href="resources.html">Guidance and Resources</a></div></div>
+      <a href="destinations.html">Study Destinations</a>
+      <div class="nav-drop"><a href="about.html">About</a><div class="drop-menu"><a href="about.html">About Global Guidance Hub</a><a href="mentors.html">Introducing the Mentors</a><a href="stories.html">Student Journeys</a></div></div>
+      <a class="nav-button" href="contact.html">Talk to a Mentor</a>
     </nav>
   </div>
 </header>
@@ -168,178 +202,26 @@
         <p class="hero-lead">Your guidance should be too.</p>
         <p class="hero-text">Choosing what to study, where to study and which direction to take can shape much more than the next few years. These decisions deserve careful thought, honest advice and guidance that reflects your individual circumstances.</p><p class="hero-text">At Global Guidance Hub, we help students and families explore academic interests, understand educational opportunities and make informed decisions about their future.</p><p class="hero-text">From early academic planning and university selection to applications and preparing for the next chapter, our guidance begins with understanding you.</p>
         <div class="hero-buttons">
-          <a class="button button-primary" href="#profile">Explore Your Options <span>→</span></a>
-          <a class="button button-white" href="#contact">Talk to a Mentor <span>→</span></a>
+          <a class="button button-primary" href="contact.html#profile">Explore Your Options <span>→</span></a>
+          <a class="button button-white" href="contact.html#contact">Talk to a Mentor <span>→</span></a>
         </div>
       </div>
       <div class="hero-note"><span>Clear advice.</span><span>Personal guidance.</span><span>A plan that makes sense for you.</span></div>
     </div>
   </section>
 
-  <section class="intro section" id="mentors"><div class="container intro-grid">
-      <div class="reveal"><p class="eyebrow eyebrow-blue">INTRODUCING THE MENTORS</p><h2>Two Mentors. One Shared Purpose.</h2></div>
-      <div class="intro-text reveal"><p>Global Guidance Hub was built around a simple belief: good educational guidance should be personal.</p><p>Our journeys into student mentoring began separately, shaped by different experiences and the students we worked with. Yet both led us to the same understanding: students make better decisions when someone takes the time to understand the person behind the application.</p><p>That shared belief brought us together to create Global Guidance Hub.</p><p>Today, we work with students and families navigating important academic decisions, from exploring subjects and degree options to choosing universities and planning for higher education.</p><p>Every student’s circumstances are different. Our role is to listen, understand and help them make informed decisions about what comes next.</p><p><a class="button button-outline" href="#about">Meet Your Mentors <span>→</span></a></p><!-- Mentor photographs, names, backgrounds and introductions go here --></div></div></section>
-
   <section class="intro section" id="approach"><div class="container intro-grid">
       <div class="reveal"><p class="eyebrow eyebrow-blue">OUR APPROACH</p><h2>We Start with Understanding You.</h2></div>
       <div class="intro-text reveal"><p>We don’t begin with a university list. We begin with you.</p><p>Your academic background, your interests, your ambitions, what matters to you and your family, and what you hope to achieve in the future.</p><p>Understanding these things allows us to explore educational opportunities that are meaningful and appropriate for your circumstances.</p><p>We believe good guidance is not about making decisions for students. It is about giving them the perspective, information and confidence to make those decisions for themselves.</p><p><strong>We guide the conversation. You shape the future.</strong></p></div></div></section>
 
-  <section class="section stage-section" id="explore"><div class="container">
-      <div class="section-head  reveal"><p class="eyebrow eyebrow-blue">WHERE ARE YOU IN YOUR JOURNEY?</p><h2>You Don’t Need to Have Everything Figured Out Yet.</h2><p>Every student begins from a different place. Some have a clear direction, while others are still discovering their interests and exploring what is possible.</p><p>Wherever you are in your educational journey, we’re here to help you understand your options and take the next step.</p></div><div class="stage-grid flow"><article class="stage-card reveal"><span class="card-number">01</span><h3>Still Exploring?</h3><h4>Discover What Interests You.</h4><p>Not sure which subjects, degree or career direction to pursue?</p><p>We help you explore your interests, understand different academic disciplines and discover opportunities you may not have considered.</p><a href="#profile">Explore Your Interests <b>→</b></a></article><article class="stage-card reveal"><span class="card-number">02</span><h3>Planning for University?</h3><h4>Make Today’s Choices Count.</h4><p>For O Level, A Level, Intermediate and other students beginning to think about university, early guidance can make future decisions clearer.</p><p>Understand subject requirements, degree options and how your academic choices may influence the opportunities available to you.</p><a href="#profile">Explore Your Options <b>→</b></a></article><article class="stage-card reveal"><span class="card-number">03</span><h3>Ready to Apply?</h3><h4>Turn Your Plans into Action.</h4><p>If you already have an idea of what you want to study, we can help you build a thoughtful university shortlist, understand entry requirements and navigate the application process.</p><a href="#applications">Plan Your Application <b>→</b></a></article><article class="stage-card reveal"><span class="card-number">04</span><h3>Considering Postgraduate Study?</h3><h4>Build on What You’ve Achieved.</h4><p>Explore master’s degrees, research opportunities and further qualifications that align with your academic interests and professional goals.</p><a href="#profile">Explore Postgraduate Options <b>→</b></a></article><article class="stage-card reveal"><span class="card-number">05</span><h3>Already Have an Offer?</h3><h4>Understand What Comes Next.</h4><p>Receiving an offer is an important milestone, but it may also bring new questions.</p><p>We help you understand offer conditions, compare your options and prepare for the next stage of your educational journey.</p><a href="#contact">Discuss Your Offer <b>→</b></a></article></div></div></section>
-
-  <section class="section process-section" id="how-we-guide"><div class="container">
-      <div class="section-head narrow reveal"><p class="eyebrow eyebrow-blue">HOW WE GUIDE YOU</p><h2>A Clearer Way to Make a Big Decision.</h2><p>Educational decisions can feel complicated. Our role is to help you approach them with structure, perspective and greater confidence.</p></div><div class="process"><article class="process-row reveal"><div class="process-no">01</div><div class="process-main"><h3>Understand</h3><h4>Begin with a Conversation.</h4><p>We explore your academic background, interests, ambitions, priorities and the questions you want to answer.</p></div></article><article class="process-row reveal"><div class="process-no">02</div><div class="process-main"><h3>Explore</h3><h4>Discover Possibilities Worth Considering.</h4><p>Together, we examine subjects, programmes, universities and educational opportunities that may align with your goals.</p></div></article><article class="process-row reveal"><div class="process-no">03</div><div class="process-main"><h3>Evaluate</h3><h4>Look Beyond the Obvious.</h4><p>We help you compare options based on academic suitability, course content, costs, location, student experience and future possibilities.</p></div></article><article class="process-row reveal"><div class="process-no">04</div><div class="process-main"><h3>Plan</h3><h4>Move Forward with Clarity.</h4><p>Once you have identified a direction, we help you understand the requirements, preparation and timelines involved.</p></div></article></div>
-      <div class="center reveal"><p>The goal is not simply to create a university shortlist. It is to help you understand why your choices make sense for you.</p></div></div></section>
-
-  <section class="section stage-section" id="areas"><div class="container">
-      <div class="section-head  reveal"><p class="eyebrow eyebrow-blue">AREAS OF GUIDANCE</p><h2>Different Questions. Different Possibilities. Personalised Guidance.</h2><p>Educational journeys involve decisions at different stages. Our guidance is designed to help students and families navigate them thoughtfully.</p></div><div class="stage-grid flow"><article class="stage-card reveal"><span class="card-number">01</span><h3>Academic and Subject Planning</h3><p>Understand how your subjects, qualifications and academic interests connect with future degree opportunities.</p></article><article class="stage-card reveal"><span class="card-number">02</span><h3>Degree and Career Exploration</h3><p>Explore different academic disciplines, career directions and professional qualifications to identify options that may suit your interests and strengths.</p></article><article class="stage-card reveal"><span class="card-number">03</span><h3>University and Programme Selection</h3><p>Compare universities and programmes beyond rankings, considering academic fit, course content, teaching approaches and future opportunities.</p></article><article class="stage-card reveal"><span class="card-number">04</span><h3>International Education Options</h3><p>Understand how education systems differ across countries, including degree structures, admission requirements and opportunities for further study.</p></article><article class="stage-card reveal"><span class="card-number">05</span><h3>Admissions and Application Planning</h3><p>Navigate university applications, entry requirements, admissions tests, personal statements, supporting documents and important deadlines.</p></article><article class="stage-card reveal"><span class="card-number">06</span><h3>Scholarships and Financial Planning</h3><p>Explore available scholarships, funding eligibility and the financial considerations involved in different educational choices.</p></article><article class="stage-card reveal"><span class="card-number">07</span><h3>Postgraduate and Professional Development</h3><p>Consider master’s degrees, research opportunities and professional qualifications in relation to your longer-term aspirations.</p></article><article class="stage-card reveal"><span class="card-number">08</span><h3>Preparing for University</h3><p>Understand university offers, enrolment requirements, accommodation considerations and the practical steps involved in transitioning to higher education.</p></article></div>
-      <div class="center reveal"><a class="button button-outline" href="#profile">Explore How We Can Guide You <span>→</span></a></div></div></section>
-
-  <section class="section stage-section" id="choosing"><div class="container">
-      <div class="section-head  reveal"><p class="eyebrow eyebrow-blue">CHOOSING THE RIGHT UNIVERSITY</p><h2>Finding the Right University Takes More Than Rankings.</h2><p>A university’s reputation can be important, but it should never be the only consideration.</p><p>The right university should make sense academically, financially and personally. It should provide an environment in which you can learn, develop and work towards your goals.</p><p>We help you consider the complete picture.</p></div><div class="stage-grid flow"><article class="stage-card reveal"><span class="card-number">01</span><h3>Academic Fit</h3><p>Does the programme suit your qualifications, interests and strengths?</p></article><article class="stage-card reveal"><span class="card-number">02</span><h3>Course Content</h3><p>Will you enjoy and benefit from what you will be studying?</p></article><article class="stage-card reveal"><span class="card-number">03</span><h3>Learning Environment</h3><p>Does the teaching approach, campus atmosphere and student experience suit you?</p></article><article class="stage-card reveal"><span class="card-number">04</span><h3>Costs and Scholarships</h3><p>What is the overall financial commitment, and which funding opportunities may be available?</p></article><article class="stage-card reveal"><span class="card-number">05</span><h3>Location</h3><p>Can you see yourself living, studying and feeling comfortable there?</p></article><article class="stage-card reveal"><span class="card-number">06</span><h3>Opportunities Beyond the Classroom</h3><p>What opportunities exist for research, internships, practical learning and personal development?</p></article><article class="stage-card reveal"><span class="card-number">07</span><h3>Career and Future Plans</h3><p>How might this degree support your longer-term academic and professional ambitions?</p></article></div>
-      <div class="center reveal"><p>The goal is not simply to find a good university. It is to find the right one for you.</p></div></div></section>
-
-  <section class="section fit-section" id="early-planning"><div class="container">
-      <div class="section-head  reveal"><p class="eyebrow eyebrow-blue">EARLY ACADEMIC PLANNING</p><h2>Good University Decisions Begin Before the Application.</h2><p>Some of the most important educational decisions are made long before university applications open.</p><p>For students completing O Levels, A Levels, Intermediate or other secondary qualifications, early planning can help clarify academic interests and keep future opportunities open.</p><p>We help students and families explore:</p></div><div class="fit-grid"><div>Degree and career interests</div><div>Subject choices and academic preparation</div><div>University entry requirements</div><div>Different education systems and degree options</div><div>Admissions tests and application timelines</div><div>Scholarships and affordability</div><div>Academic and extracurricular development</div></div>
-      <div class="fit-footer"><div><p>You don’t need to have everything decided from the beginning.</p><p>The aim is to understand how the choices you make today may shape the opportunities available tomorrow.</p></div><a class="button button-outline" href="#profile">Start Planning Ahead <span>→</span></a></div></div></section>
-
-  <section class="destinations-section section" id="destinations"><div class="container">
-      <div class="section-head light-head reveal"><p class="eyebrow eyebrow-light">STUDY DESTINATIONS</p><h2>Destinations We Know, Not Just Destinations We List.</h2><h4>Exploring Education Systems, Not Simply Countries.</h4><p>Every country offers a different approach to higher education, shaped by its academic traditions, degree structures, teaching methods and opportunities.</p><p>Understanding these differences can help you make a more informed decision about where and how you want to study.</p><p>We encourage students to explore destinations within the broader context of their academic goals, financial considerations and personal preferences.</p></div><div class="destination-grid"><article class="destination-card uk reveal"><span class="destination-no">01</span><div><h3>United Kingdom</h3><h4>Specialised Degrees. Established Academic Traditions.</h4><p>The UK offers internationally recognised universities, specialised undergraduate programmes and a broad range of postgraduate and research opportunities.</p><p>Explore degree structures, direct entry and foundation options, university selection, admissions requirements and the academic experiences offered by different institutions.</p><a href="https://wa.me/923712136262?text=Hi%2C%20I%27m%20interested%20in%20studying%20in%20the%20UK.%20Could%20you%20guide%20me%3F" target="_blank" rel="noopener">Explore Education in the UK →</a></div></article><article class="destination-card usa reveal"><span class="destination-no">02</span><div><h3>United States</h3><h4>Flexibility, Exploration and Academic Choice.</h4><p>The United States offers a diverse higher education system, including research universities, liberal arts colleges and specialist institutions.</p><p>Many undergraduate programmes allow students to explore different subjects before choosing a major, making the system particularly appealing to those who value academic flexibility.</p><p>Explore university differences, programmes, campus environments, admission requirements and financial aid opportunities.</p><a href="https://wa.me/923712136262?text=Hi%2C%20I%27m%20interested%20in%20studying%20in%20the%20USA.%20Could%20you%20guide%20me%3F" target="_blank" rel="noopener">Explore Education in the USA →</a></div></article><article class="destination-card canada reveal"><span class="destination-no">03</span><div><h3>Canada</h3><h4>Diverse Institutions. Academic and Applied Learning.</h4><p>Canada offers educational opportunities through universities and colleges, with different approaches to academic study, practical learning and professional preparation.</p><p>Explore programme structures, institutional recognition, admission requirements, affordability and the factors worth considering when choosing a suitable option.</p><a href="https://wa.me/923712136262?text=Hi%2C%20I%27m%20interested%20in%20studying%20in%20Canada.%20Could%20you%20guide%20me%3F" target="_blank" rel="noopener">Explore Education in Canada →</a></div></article><article class="destination-card australia reveal"><span class="destination-no">04</span><div><h3>Australia</h3><h4>Global Perspectives. Research and Innovation.</h4><p>Australia offers established universities and a wide range of undergraduate, postgraduate and research programmes across numerous disciplines.</p><p>Explore academic options, teaching environments, institutional strengths and the practical considerations involved in planning higher education.</p><a href="https://wa.me/923712136262?text=Hi%2C%20I%27m%20interested%20in%20studying%20in%20Australia.%20Could%20you%20guide%20me%3F" target="_blank" rel="noopener">Explore Education in Australia →</a></div></article><article class="destination-card uae reveal"><span class="destination-no">05</span><div><h3>United Arab Emirates</h3><h4>International Education in a Regional Setting.</h4><p>The UAE offers a growing range of higher education opportunities, including international university campuses and specialised academic institutions.</p><p>Explore programmes, institutional recognition, accreditation, admission requirements and the experiences available within a multicultural learning environment.</p><a href="https://wa.me/923712136262?text=Hi%2C%20I%27m%20interested%20in%20studying%20in%20the%20UAE.%20Could%20you%20guide%20me%3F" target="_blank" rel="noopener">Explore Education in the UAE →</a></div></article><article class="destination-card malaysia reveal"><span class="destination-no">06</span><div><h3>Malaysia</h3><h4>Diverse Academic Opportunities in a Multicultural Environment.</h4><p>Malaysia offers a variety of higher education opportunities through public universities, private institutions and international university branch campuses.</p><p>Students can explore locally awarded degrees, international programmes and selected transfer or progression opportunities, depending on the institution.</p><p>Understanding programme accreditation, qualification recognition, language of instruction and study costs is an important part of evaluating the available options.</p><a href="https://wa.me/923712136262?text=Hi%2C%20I%27m%20interested%20in%20studying%20in%20Malaysia.%20Could%20you%20guide%20me%3F" target="_blank" rel="noopener">Explore Education in Malaysia →</a></div></article><article class="destination-card turkey reveal"><span class="destination-no">07</span><div><h3>Türkiye</h3><h4>A Distinctive Academic and Cultural Experience.</h4><p>Türkiye offers higher education opportunities through public and private universities, with programmes available in Turkish and English across different disciplines.</p><p>Explore academic options, admission requirements, language considerations and how different institutions may align with your educational ambitions.</p><a href="https://wa.me/923712136262?text=Hi%2C%20I%27m%20interested%20in%20studying%20in%20T%C3%BCrkiye.%20Could%20you%20guide%20me%3F" target="_blank" rel="noopener">Explore Education in Türkiye →</a></div></article><article class="destination-card europe reveal"><span class="destination-no">08</span><div><h3>Europe</h3><h4>Different Education Systems. A World of Possibilities.</h4><p>Europe offers diverse academic traditions, degree structures and higher education opportunities across different countries.</p><p>Each education system has its own admission requirements, language considerations, qualifications and financial arrangements.</p><p>Explore selected countries and institutions to understand which opportunities may suit your interests and plans.</p><a href="https://wa.me/923712136262?text=Hi%2C%20I%27m%20interested%20in%20studying%20in%20Europe.%20Could%20you%20guide%20me%3F" target="_blank" rel="noopener">Explore Education in Europe →</a></div></article></div></div></section>
-
-  <section class="section process-section" id="applications"><div class="container">
-      <div class="section-head narrow reveal"><p class="eyebrow eyebrow-blue">APPLICATIONS AND ADMISSIONS</p><h2>Support Beyond University Selection.</h2><p>Once you have identified your academic direction, the next step is understanding how to pursue it.</p><p>University applications involve different requirements, assessments, documents and timelines depending on the country, institution and programme.</p><p>We help students approach this process with a clear understanding of what is expected.</p></div><div class="process"><article class="process-row reveal"><div class="process-no">01</div><div class="process-main"><h3>University Applications</h3><h4>Your application should still sound like you.</h4><p>A strong application communicates your academic journey, interests, achievements and goals clearly and authentically.</p><p>We provide guidance on university selection, applications, personal statements, statements of purpose, references, supporting documents and submission requirements.</p></div></article><article class="process-row reveal"><div class="process-no">02</div><div class="process-main"><h3>Admissions and English-Language Tests</h3><h4>Prepare for What Your Application Requires.</h4><p>Different universities and programmes may require admissions or English-language tests.</p><p>We help students understand relevant requirements and timelines for examinations such as IELTS, TOEFL, SAT, ACT, LNAT, UCAT, GRE and GMAT, where applicable.</p></div></article><article class="process-row reveal"><div class="process-no">03</div><div class="process-main"><h3>Interviews and Portfolios</h3><h4>Understand What Universities Are Looking For.</h4><p>Some programmes require interviews, portfolios or other assessments.</p><p>We help students understand these requirements and prepare to communicate their interests, achievements and motivations clearly.</p></div></article><article class="process-row reveal"><div class="process-no">04</div><div class="process-main"><h3>Scholarships and Funding</h3><h4>Look Beyond the Scholarship Headline.</h4><p>We help students explore scholarship opportunities, understand eligibility requirements and consider the overall financial implications of their educational choices.</p></div></article><article class="process-row reveal"><div class="process-no">05</div><div class="process-main"><h3>After the Offer</h3><h4>Getting the Offer Is Not the End of the Journey.</h4><p>Receiving an offer can bring important decisions about university selection, academic conditions, deposits, financial documentation, visas and accommodation.</p><p>We help you understand the requirements and prepare for what comes next.</p><p>Our aim is to make the transition from applicant to university student as clear and manageable as possible.</p></div></article></div>
-      <div class="center reveal"><a class="button button-outline" href="#contact">Understand the Application Process <span>→</span></a></div></div></section>
-
-  <section class="section guidance-section" id="guidance"><div class="container">
-      <div class="section-head  reveal"><p class="eyebrow eyebrow-blue">GUIDANCE AND RESOURCES</p><h2>Useful Answers for Decisions You’re Making Now.</h2><p>University planning brings plenty of questions. Our guidance is designed to help students and families understand the decisions behind the application process, not just the paperwork.</p><p>Explore practical information to make sense of your options and approach important decisions with greater confidence.</p></div><div class="guide-grid"><article class="guide-card reveal"><span>SHORTLISTING</span><h3>How should I shortlist universities?</h3><p>Learn how to balance academic ambitions, entry requirements, personal preferences and realistic admission opportunities.</p></article><article class="guide-card reveal"><span>RANKINGS</span><h3>What should I consider beyond university rankings?</h3><p>Understand why course content, academic suitability, student experience, affordability and future opportunities matter.</p></article><article class="guide-card reveal"><span>EARLY PLANNING</span><h3>How should A Level and Intermediate students begin university planning?</h3><p>Discover how subject choices, academic preparation and early research can influence future educational opportunities.</p></article><article class="guide-card reveal"><span>SCHOLARSHIPS</span><h3>How do university scholarships actually work?</h3><p>Understand different types of scholarships, eligibility criteria and what financial support may realistically be available.</p></article><article class="guide-card reveal"><span>COSTS</span><h3>What is the real cost of studying abroad?</h3><p>Learn how tuition fees, accommodation, living expenses and other costs contribute to the overall financial commitment.</p></article><article class="guide-card reveal"><span>UNIVERSITY OFFERS</span><h3>How do I choose between two university offers?</h3><p>Explore how to compare programme content, entry conditions, affordability, student experience and future opportunities.</p></article><article class="guide-card reveal"><span>POSTGRADUATE STUDY</span><h3>Is postgraduate study the right next step for me?</h3><p>Understand how further education may align with your academic interests, career ambitions and professional development.</p></article><article class="guide-card reveal"><span>STUDY DESTINATIONS</span><h3>Which country best fits my plans?</h3><p>Explore how education systems, degree structures, costs and learning environments can influence your choice.</p></article></div>
-      <div class="center"><a class="button button-outline" href="#contact">Explore Our Guidance <span>→</span></a></div></div></section>
-
-  <section class="section stories-section" id="stories"><div class="container">
-      <div class="section-head  reveal"><p class="eyebrow eyebrow-blue">STUDENT JOURNEYS</p><h2>Every Student Arrives with a Different Question.</h2><p>Some students are deciding between universities.</p><p>Some are unsure which country makes sense.</p><p>Some know what they want to study but are still exploring where.</p><p>Others simply need someone to help them make sense of the options available.</p></div><div class="center reveal"><p>Every journey is different, and each brings its own questions, priorities and possibilities.</p><p>We believe the value of guidance lies not only in where students eventually study, but in helping them understand the decisions they make along the way.</p><a class="button button-outline" href="#contact">Explore Student Journeys <span>→</span></a></div></div></section>
-
-  <section class="about-section" id="about">
-    <div class="about-image"></div>
-    <div class="about-content"><div class="content-inner reveal">
-      <p class="eyebrow eyebrow-light">ABOUT GLOBAL GUIDANCE HUB</p>
-      <h2>Helping Students Find Direction, Not Just Destinations.</h2><p>Education has the power to shape lives, but deciding which direction to take is not always straightforward.</p><p>Students are often expected to make important choices about subjects, degrees, universities and careers while they are still discovering their interests, strengths and aspirations.</p><p>Our individual experiences in student mentoring brought us to a shared understanding: meaningful guidance should help students think, question, explore and make informed choices.</p><p>That belief led us to create Global Guidance Hub.</p><p>We want students to feel comfortable discussing uncertainties, challenging assumptions and exploring possibilities they may not previously have considered.</p><p>We also believe students should be able to evaluate educational opportunities with an understanding of their academic suitability, financial implications and future relevance.</p><p>Above all, our purpose is to help students make decisions that reflect who they are and what they hope to achieve.</p><p>Because finding the right direction matters just as much as reaching the destination.</p>
-      <p><strong>The Founders</strong><br><strong>Global Guidance Hub</strong></p>
-    </div></div>
-  </section>
-
-  <section class="final-cta" id="contact"><div class="container reveal">
-      <p class="eyebrow eyebrow-light">CONTACT</p>
-      <h2>Every Journey Begins with a Conversation.</h2><p>You may already have a clear direction, several possibilities in mind or simply questions about what comes next.</p><p>Whatever stage you are at, we’re here to listen, explore and help you understand your options.</p>
-      <a class="button button-white" href="https://wa.me/923712136262?text=Hello%20Global%20Guidance%20Hub%2C%20I%27d%20like%20to%20start%20a%20conversation." target="_blank" rel="noopener">Start a Conversation <span>→</span></a> <a class="button button-white" href="#profile">Explore Your Options <span>→</span></a>
-      <p>WhatsApp: <a href="https://wa.me/923712136262" target="_blank" rel="noopener">+92 371-2136262</a> / <a href="https://wa.me/923712136261" target="_blank" rel="noopener">+92 371-2136261</a><br>Email: <a href="mailto:globalguidancehub@gmail.com">globalguidancehub@gmail.com</a><br>Instagram: <a href="https://www.instagram.com/global.guidance.hub/" target="_blank" rel="noopener">@global.guidance.hub</a></p>
-    </div></section>
-
-  <!-- EXPLORE YOUR OPTIONS (FORM) -->
-  <section class="profile-section section" id="profile">
-    <div class="container profile-grid">
-      <div class="profile-intro reveal"><p class="eyebrow eyebrow-light">START A CONVERSATION</p><h2>Explore Your Options</h2><p>Tell us a little about yourself, your academic interests and what you would like guidance with.</p><p>Let’s explore the possibilities ahead.</p></div>
-
-      <form class="profile-form reveal" id="profileForm">
-        <div class="form-heading">
-          <span>01</span>
-          <h3>Tell us about yourself.</h3>
-        </div>
-
-        <div class="form-grid">
-          <label>
-            Full Name
-            <input type="text" name="fullName" placeholder="Your full name" autocomplete="name" required>
-          </label>
-
-          <label>
-            Phone Number
-            <input type="text" name="phone" placeholder="e.g. +92 300 0000000" inputmode="tel" autocomplete="tel" required>
-          </label>
-
-          <label>
-            Email Address
-            <input type="text" name="email" placeholder="you@example.com" inputmode="email" autocomplete="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
-          </label>
-
-          <label>
-            City of Residence
-            <input type="text" name="city" placeholder="City" autocomplete="address-level2" required>
-          </label>
-
-          <label>
-            Current Level of Education
-            <select name="level" required>
-              <option value="">Choose one</option>
-              <option>Matric / O Levels</option>
-              <option>Intermediate</option>
-              <option>A Levels</option>
-              <option>IB</option>
-              <option>Bachelor’s</option>
-              <option>Master’s</option>
-              <option>Other</option>
-            </select>
-          </label>
-
-          <label>
-            Institution
-            <input type="text" name="institution" placeholder="School, college or university" required>
-          </label>
-
-          <label>
-            CGPA
-            <input type="text" name="cgpa" placeholder="CGPA · Grades · Classification" required>
-          </label>
-
-          <label>
-            Completion Year
-            <input type="text" name="completionYear" placeholder="e.g. 2027" inputmode="numeric" pattern="(19|20)[0-9]{2}" maxlength="4" required>
-          </label>
-
-          <label>
-            Country of Interest
-            <select name="country" id="countrySelect" required>
-              <option value="">Choose a country</option>
-              <option>United Kingdom</option>
-              <option>United States</option>
-              <option>Canada</option>
-              <option>Australia</option>
-              <option>United Arab Emirates</option>
-              <option>Malaysia</option>
-              <option>Türkiye</option>
-              <option>Europe</option>
-              <option>Not Sure</option>
-            </select>
-          </label>
-
-          <label>
-            Budget
-            <select name="budget" id="budgetSelect" required>
-              <option value="">Choose a country first</option>
-            </select>
-          </label>
-
-          <label style="grid-column: 1 / -1;">
-            Program Interested In
-            <input type="text" name="program" placeholder="Subject or programme" required>
-          </label>
-
-          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
-        </div>
-
-        <button class="button button-primary" type="submit">
-          Submit <span>→</span>
-        </button>
-
-        <p class="form-message" id="profileMessage" role="status"></p>
-      </form>
-    </div>
-  </section>
+<section class="final-cta"><div class="container reveal"><p class="eyebrow eyebrow-light">CONTACT</p><h2>Every Journey Begins with a Conversation.</h2><a class="button button-white" href="https://wa.me/923712136262?text=Hello%20Global%20Guidance%20Hub%2C%20I%27d%20like%20to%20start%20a%20conversation." target="_blank" rel="noopener">Start a Conversation <span>→</span></a><a class="button button-white" href="contact.html#profile">Explore Your Options <span>→</span></a></div></section>
 </main>
 
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand"><img src="assets/global-guidance-hub-logo.png" alt="Global Guidance Hub logo"><p>Thoughtful educational guidance, academic planning and university exploration.</p><p>Your Journey. Your Choices. Our Guidance.</p></div>
-    <div><h4>Explore</h4><a href="#approach">Our Approach</a><a href="#explore">Your Educational Journey</a><a href="#areas">Areas of Guidance</a><a href="#destinations">Study Destinations</a><a href="#guidance">Guidance and Resources</a></div>
-    <div><h4>About</h4><a href="#about">Our Story</a><a href="#mentors">Meet Your Mentors</a><a href="#stories">Student Journeys</a><a href="#contact">Contact Us</a></div>
+    <div><h4>Explore</h4><a href="#approach">Our Approach</a><a href="journey.html#explore">Your Educational Journey</a><a href="areas.html#areas">Areas of Guidance</a><a href="destinations.html#destinations">Study Destinations</a><a href="resources.html#guidance">Guidance and Resources</a></div>
+    <div><h4>About</h4><a href="about.html#about">Our Story</a><a href="mentors.html#mentors">Meet Your Mentors</a><a href="stories.html#stories">Student Journeys</a><a href="contact.html#contact">Contact Us</a></div>
     <div><h4>Information</h4><span class="footer-text">Privacy Policy</span><span class="footer-text">Terms &amp; Conditions</span>
       <h4 class="follow-title">Follow</h4><div class="socials"><a href="https://www.instagram.com/global.guidance.hub/" target="_blank" rel="noopener">Instagram</a></div></div>
   </div>
@@ -348,99 +230,56 @@
 
 <a class="wa-float" href="https://wa.me/923712136262?text=Hello%20Global%20Guidance%20Hub%2C%20I%20would%20like%20to%20talk%20to%20a%20mentor%20about%20studying%20abroad." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg><span>Chat on WhatsApp</span></a>
 <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+<div class="welcome-pop" id="welcomePop" role="dialog" aria-modal="true" aria-labelledby="popTitle">
+  <div class="welcome-card">
+    <button class="welcome-close" id="popClose" type="button" aria-label="Close">×</button>
+    <div class="welcome-img" aria-hidden="true"></div>
+    <div class="welcome-text">
+      <p class="eyebrow eyebrow-blue">ABOUT GLOBAL GUIDANCE HUB</p>
+      <h2 id="popTitle">Helping Students Find Direction, Not Just Destinations.</h2>
+      <p>Education has the power to shape lives, but deciding which direction to take is not always straightforward.</p>
+      <p>Students are often expected to make important choices about subjects, degrees, universities and careers while they are still discovering their interests, strengths and aspirations.</p>
+      <p><strong>Because finding the right direction matters just as much as reaching the destination.</strong></p>
+      <div class="welcome-actions">
+        <a class="button button-primary" href="mentors.html#mentors">Meet Your Mentors <span>→</span></a>
+        <a class="button button-outline" href="contact.html#profile">Explore Your Options <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var pop = document.getElementById('welcomePop'); if (!pop) return;
+  function close() { pop.classList.remove('show'); try { sessionStorage.setItem('ggh_welcome', '1'); } catch (e) {} }
+  document.getElementById('popClose').addEventListener('click', close);
+  pop.addEventListener('click', function (e) { if (e.target === pop || e.target.closest('.welcome-actions a')) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  var seen = false; try { seen = sessionStorage.getItem('ggh_welcome'); } catch (e) {}
+  if (!seen) setTimeout(function () { pop.classList.add('show'); document.getElementById('popClose').focus(); }, 800);
+})();
+</script>
 
 <script src="script.js"></script>
 
 <script>
-/* ---------- Form: budget brackets + Google Sheet submission ---------- */
-
-// Paste your Google Apps Script Web App URL here (see google-apps-script.gs).
-// Optional: also add each query to the Google Sheet.
-var GGH_FORM_ENDPOINT = '';
-var GGH_FALLBACK_EMAIL = 'globalguidancehub@gmail.com';
-// Every submission is emailed to the address below (via FormSubmit; first submission needs a one-time email confirmation).
-var GGH_EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/' + GGH_FALLBACK_EMAIL;
-
-var GGH_BUDGETS = {
-  'United States':  ['Below $25,000', '$25,000–$35,000', '$35,001–$50,000', 'Above $50,000'],
-  'United Kingdom': ['Below £20,000', '£20,000–£30,000', '£30,001–£40,000', 'Above £40,000'],
-  'Australia':      ['Below A$40,000', 'A$40,000–A$55,000', 'A$55,001–A$70,000', 'Above A$70,000'],
-  'Malaysia':       ['Below RM30,000', 'RM30,000–RM45,000', 'RM45,001–RM65,000', 'Above RM65,000'],
-  'Türkiye':         ['Below $7,000', '$7,000–$12,000', '$12,001–$20,000', 'Above $20,000'],
-  'United Arab Emirates':            ['Below AED 50,000', 'AED 50,000–75,000', 'AED 75,001–100,000', 'Above AED 100,000'],
-  'Europe':         ['Below €12,000', '€12,000–€20,000', '€20,001–€30,000', 'Above €30,000']
-  // Canada: add its four brackets here when available, e.g. 'Canada': ['Below C$...', ...]
-};
-
-(function () {
-  var country = document.getElementById('countrySelect');
-  var budget = document.getElementById('budgetSelect');
-  if (!country || !budget) return;
-
-  country.addEventListener('change', function () {
-    var list = GGH_BUDGETS[country.value] || (country.value ? ['Not sure yet', 'I’ll discuss this with a mentor'] : null);
-    budget.innerHTML = '';
-    if (!list) { budget.add(new Option('Choose a country first', '')); return; }
-    budget.add(new Option('Choose an approximate range', ''));
-    list.forEach(function (b) { budget.add(new Option(b, b)); });
-    if (GGH_BUDGETS[country.value]) budget.add(new Option('Not sure yet', 'Not sure yet'));
-  });
-
-  document.addEventListener('submit', function (e) {
-    var form = e.target;
-    if (!form || form.id !== 'profileForm') return;
-    e.preventDefault();
-    e.stopImmediatePropagation();
-
-    var msg = document.getElementById('profileMessage');
-    var btn = form.querySelector('button[type="submit"]');
-    var data = {};
-    new FormData(form).forEach(function (v, k) { data[k] = String(v).trim(); });
-    if (data.website) return; // honeypot
-
-    btn.disabled = true;
-    msg.textContent = 'Submitting…';
-
-    // Optional copy into the Google Sheet (only if an Apps Script URL is set)
-    if (GGH_FORM_ENDPOINT) {
-      fetch(GGH_FORM_ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(data) }).catch(function () {});
-    }
-
-    // Email to the team
-    var mail = {
-      _subject: 'New website enquiry — ' + data.fullName,
-      _template: 'table',
-      'Full Name': data.fullName, 'Phone Number': data.phone, 'Email Address': data.email,
-      'City of Residence': data.city, 'Current Level of Education': data.level,
-      'Institution': data.institution, 'CGPA': data.cgpa, 'Completion Year': data.completionYear,
-      'Country of Interest': data.country, 'Budget': data.budget, 'Program Interested In': data.program,
-      _replyto: data.email
-    };
-    fetch(GGH_EMAIL_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(mail)
-    })
-      .then(function (r) { if (!r.ok) throw new Error('failed'); return r.json(); })
-      .then(function () {
-        msg.textContent = 'Thank you — your query has been submitted. Our team will contact you soon.';
-        form.reset();
-        budget.innerHTML = '<option value="">Choose a country first</option>';
-      })
-      .catch(function () {
-        msg.textContent = 'Sorry, we could not send your query. Please WhatsApp us on +92 371-2136262 or email ' + GGH_FALLBACK_EMAIL + '.';
-      })
-      .then(function () { btn.disabled = false; });
-  }, true);
-})();
-
 /* ---------- Anchor links: always land on the very top of the section (below the sticky header) ---------- */
 (function () {
   var hdr = document.querySelector('.site-header');
   function go(id, smooth) {
     var el = document.getElementById(id); if (!el) return;
     var y = el.getBoundingClientRect().top + window.pageYOffset - (hdr ? hdr.offsetHeight : 0) - 4;
-    window.scrollTo({ top: Math.max(0, y), behavior: smooth ? 'smooth' : 'auto' });
+    window.scrollTo({ top: Math.max(0, y), behavior: smooth ? 'smooth' : 'instant' });
+  }
+  function settle(id, tries) {
+    var last = -1, still = 0;
+    (function tick() {
+      var y = window.pageYOffset;
+      if (y === last) still++; else { still = 0; last = y; }
+      if (still < 8) { requestAnimationFrame(tick); return; }
+      var el = document.getElementById(id); if (!el || tries < 1) return;
+      var d = el.getBoundingClientRect().top - ((hdr ? hdr.offsetHeight : 0) + 4);
+      if (Math.abs(d) > 2) { go(id, false); settle(id, tries - 1); }
+    })();
   }
   document.addEventListener('click', function (e) {
     var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
@@ -448,11 +287,17 @@ var GGH_BUDGETS = {
     var id = a.getAttribute('href').slice(1);
     if (!id || !document.getElementById(id)) return;
     e.preventDefault(); go(id, true);
-    setTimeout(function () { go(id, false); }, 800);   // re-check once layout/animations settle
-    if (history.replaceState) history.replaceState(null, '', '#' + id);
+    settle(id, 4);   // keep correcting until the page has stopped moving
   });
-  window.addEventListener('load', function () { if (location.hash) setTimeout(function () { go(location.hash.slice(1), false); }, 250); });
+  // Always open at the top of the page, unless the link itself points to a section (e.g. /#about)
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('load', function () {
+    var id = location.hash.slice(1);
+    if (id && document.getElementById(id)) setTimeout(function () { go(id, false); }, 250);
+    else window.scrollTo(0, 0);
+  });
 })();
 </script>
+<script>(function(){var w=document.querySelector(".wa-float");function f(){w.classList.toggle("show",window.pageYOffset>350)}addEventListener("scroll",f,{passive:true});f();})();</script>
 </body>
 </html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Global Guidance Hub — thoughtful educational guidance, academic planning and university exploration.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Choosing the Right University | Global Guidance Hub">
+  <meta property="og:description" content="Thoughtful educational guidance, academic planning and university exploration.">
+  <meta property="og:url" content="https://mithanizulfikar.github.io/GlobalGuidance/universities.html">
+  <meta property="og:image" content="https://mithanizulfikar.github.io/GlobalGuidance/assets/global-guidance-hub-logo.png">
+  <meta name="theme-color" content="#0b2948">
+  <title>Choosing the Right University | Global Guidance Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== top bar + floating WhatsApp ===== */
+    .quick-links{background:#0b2948;color:#fff;font-size:13px;line-height:1}
+    .quick-links .container{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 22px;padding-top:9px;padding-bottom:9px}
+    .quick-links span{display:flex;flex-wrap:wrap;gap:6px 18px}
+    .quick-links a{color:#fff;text-decoration:none;opacity:.9;white-space:nowrap}
+    .quick-links a:hover{opacity:1;text-decoration:underline}
+    .wa-float{position:fixed;left:24px;bottom:24px;z-index:60;display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:999px;background:#25d366;color:#fff;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,.25);transition:transform .2s}
+    .wa-float:hover{transform:translateY(-3px)}
+    .brand img{width:auto;height:58px}
+    .section-head p,.section-head p:last-child{color:var(--muted)}
+    .light-head p,.light-head p:last-child{color:rgba(255,255,255,.8)}
+    .about-content{padding:90px 0}
+    .final-cta p:last-of-type{margin-top:26px}
+    .footer-text{display:block;margin-bottom:11px;color:rgba(255,255,255,.7);font-size:14px}
+
+    /* ===== typography: one font, no italics, one body size, one-line headings ===== */
+    :root{--dark:#071d32;--serif:var(--sans)}
+    html{scroll-padding-top:100px}
+    em{font-style:normal}
+    h1,h2,h3{letter-spacing:-.02em}
+    h2,.final-cta h2,.intro h2,#about h2,#stories h2{font-size:clamp(20px,2.2vw,28px);white-space:nowrap}
+    h4{margin:0 0 10px;font-family:var(--sans);font-size:17px;font-weight:700;line-height:1.35;letter-spacing:0;color:var(--blue)}
+    .destination-card h4,.light-head h4{color:var(--sky)}
+    .light-head h4{margin-top:6px}
+    main p:not(.eyebrow):not(.hero-lead):not(.form-message),main li,.footer-brand p{font-size:16px!important;line-height:1.7}
+    .hero .hero-copy{max-width:1000px}
+    .hero .hero-copy h1{font-size:clamp(26px,3.3vw,50px)!important;line-height:1.14!important;white-space:nowrap;margin-bottom:8px!important}
+    .hero-lead{margin:0 0 24px;font-size:clamp(18px,2vw,28px);font-weight:500;letter-spacing:-.01em;color:var(--sky)}
+    .hero .hero-copy .hero-text{margin-bottom:14px}
+    .stage-card h3{font-size:22px;line-height:1.2}
+    .process-main h3{font-size:clamp(24px,2.2vw,30px)}
+    .destination-card h3{font-size:clamp(24px,2vw,30px)}
+    .guide-card h3{font-size:19px}
+    #about h2{white-space:normal;line-height:1.2;margin-bottom:22px}   /* half-width column: allowed to wrap */
+
+    /* ===== layout ===== */
+    .intro-grid{grid-template-columns:1fr;gap:34px}
+    .intro-text{max-width:820px;padding-left:30px;border-left:3px solid rgba(23,100,167,.28)}
+    .intro-text p+p{margin-top:14px}
+    .intro-text .button{margin-top:8px}
+    .section-head h2::after,.intro h2::after{content:"";display:block;width:56px;height:3px;border-radius:3px;background:var(--blue);margin-top:20px}
+    .light-head h2::after{background:var(--sky)}
+    #stories .section-head{max-width:none}
+    .center{text-align:center}
+    .center p{max-width:760px;margin:0 auto 14px;color:var(--muted)}
+    .center .button{margin-top:14px}
+    .stage-grid.flow{border:0;gap:18px}
+    .stage-grid.flow .stage-card{min-height:0;border:1px solid var(--line)!important}
+    #areas .stage-grid,#choosing .stage-grid{grid-template-columns:repeat(4,1fr)}
+    #explore .stage-grid{grid-template-columns:repeat(6,1fr)}
+    #explore .stage-card{grid-column:span 2}
+    #explore .stage-card:nth-child(n+4){grid-column:span 3}
+    #choosing .stage-card:last-child{grid-column:span 2}
+    .stage-card h4{margin-top:-4px}
+    .stage-card p{margin-bottom:10px}
+    .process-main p+p{margin-top:8px}
+    #how-we-guide .center,#applications .center{margin-top:44px}
+    .fit-grid{margin-bottom:0}
+    .fit-footer p+p{margin-top:8px}
+    .fit-footer{gap:30px}
+    .final-cta p{max-width:660px;margin:0 auto 22px;color:rgba(255,255,255,.85)}
+    .final-cta .button{margin:4px 6px}
+    .final-cta p a{color:inherit;text-decoration:underline}
+    .guide-card{min-height:190px;transition:transform .25s ease,box-shadow .25s ease}
+    .guide-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(11,41,72,.12)}
+    .guide-card p{margin-top:12px;color:var(--muted)}
+    .destination-card.europe{grid-column:span 2}
+    /* destination cards: same start line for every heading, clearer text on photos */
+    .destination-card{align-items:stretch;padding:66px 31px 31px}
+    .destination-card>div{display:flex;flex-direction:column;width:100%}
+    .destination-card::before{background:linear-gradient(180deg,rgba(4,20,36,.84) 0%,rgba(4,20,36,.9) 100%)}
+    .destination-card:hover::before{background:linear-gradient(180deg,rgba(4,20,36,.74),rgba(11,41,72,.88))}
+    .destination-card h3,.destination-card h4,.destination-card p{text-shadow:0 1px 8px rgba(0,0,0,.45)}
+    .destination-card h4{min-height:2.7em}
+    .destination-card p{color:rgba(255,255,255,.93)}
+    .destination-card a{margin-top:auto;padding-top:14px}
+    .destination-card p{margin-bottom:8px}
+    .footer-brand img{background:transparent;padding:0;filter:brightness(0) invert(1)}
+    .profile-intro p+p{margin-top:12px}
+    .stories-section .section-head p{display:inline-block;margin:6px 10px 6px 0;padding:10px 22px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(11,41,72,.07);color:var(--ink)}
+    .stories-section .section-head h2{margin-bottom:26px}
+    @media(min-width:681px){#early-planning .fit-grid div:last-child{grid-column:span 2}}
+
+    /* ===== destination photos ===== */
+    .malaysia{background-image:url("assets/malaysia.jpg"),url("https://unsplash.com/photos/GcueZ9hmD6c/download?force=true&w=1100")}
+    .australia{background-image:url("assets/australia.jpg"),url("https://unsplash.com/photos/3HuDT9sC29U/download?force=true&w=1100"),url("https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d4?auto=format&fit=crop&w=1100&q=82")}
+
+    /* ===== section backgrounds ===== */
+    #approach{background:radial-gradient(circle at 92% 8%,rgba(120,201,231,.30),transparent 42%),radial-gradient(circle at 4% 96%,rgba(23,100,167,.10),transparent 40%),var(--cream)}
+    #mentors{background:radial-gradient(circle at 94% 12%,rgba(120,201,231,.22),transparent 40%),linear-gradient(180deg,#fff,#f1f8fc)}
+    #explore{background:radial-gradient(circle at 6% 0%,rgba(120,201,231,.20),transparent 38%),radial-gradient(rgba(23,100,167,.08) 1.3px,transparent 1.6px) 0 0/28px 28px,linear-gradient(180deg,#fff,#f3f9fd)}
+    #how-we-guide,#applications{background:radial-gradient(circle at 95% 6%,rgba(120,201,231,.26),transparent 40%),repeating-linear-gradient(135deg,rgba(11,41,72,.03) 0 1px,transparent 1px 16px),var(--cream)}
+    #areas{background:#fff}
+    #choosing{background:linear-gradient(rgba(11,41,72,.045) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(11,41,72,.045) 1px,transparent 1px) 0 0/48px 48px,radial-gradient(circle at 92% 0%,rgba(120,201,231,.22),transparent 42%),var(--cream)}
+    #early-planning{background:radial-gradient(circle at 90% 0%,rgba(35,134,191,.14),transparent 40%),linear-gradient(180deg,#e8f3fa,#fff)}
+    #guidance{background:radial-gradient(circle at 4% 0%,rgba(120,201,231,.20),transparent 38%),radial-gradient(rgba(23,100,167,.08) 1.3px,transparent 1.6px) 0 0/28px 28px,linear-gradient(180deg,#fff,#f3f9fd)}
+    #stories{background:radial-gradient(circle at 50% 0%,rgba(120,201,231,.32),transparent 58%),linear-gradient(180deg,#eaf4fa,#fff)}
+
+    /* ===== responsive ===== */
+    @media(max-width:1080px){
+      #areas .stage-grid,#choosing .stage-grid,#explore .stage-grid{grid-template-columns:repeat(2,1fr)}
+      #explore .stage-card,#explore .stage-card:nth-child(n+4){grid-column:span 1}
+      #explore .stage-card:last-child,#choosing .stage-card:last-child{grid-column:span 2}
+      .destination-card.europe{grid-column:auto}
+    }
+    @media(max-width:800px){
+      h2,.final-cta h2,.intro h2,#stories h2{white-space:normal;font-size:24px}
+      .hero .hero-copy h1{white-space:normal;font-size:30px!important}
+    }
+    @media(max-width:680px){
+      #areas .stage-grid,#choosing .stage-grid,#explore .stage-grid{grid-template-columns:1fr}
+      #explore .stage-card:last-child,#choosing .stage-card:last-child{grid-column:span 1}
+      .quick-links .container{justify-content:center}
+      .wa-float{left:14px;bottom:16px;padding:12px 16px;font-size:13px}
+    }
+
+    /* ===== multi-page: inner-page banner, active menu item ===== */
+    .page-hero{min-height:0}
+    .page-hero .hero-inner{min-height:0;padding:64px 0}
+    .page-hero .hero-copy h1{margin-bottom:0!important}
+    .main-nav a[aria-current="page"]:not(.nav-button){color:var(--blue);box-shadow:inset 0 -2px 0 var(--blue)}
+    .intro-text .button{margin:8px 8px 0 0}
+
+    /* ===== welcome popup (home page) ===== */
+    .welcome-pop{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(4,20,36,.74);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+    .welcome-pop.show{opacity:1;visibility:visible}
+    .welcome-card{position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(860px,100%);max-height:92vh;overflow:auto;background:#fff;box-shadow:0 40px 100px rgba(0,0,0,.45);transform:translateY(24px) scale(.98);transition:transform .4s}
+    .welcome-pop.show .welcome-card{transform:none}
+    .welcome-img{min-height:430px;background:linear-gradient(rgba(7,29,50,.2),rgba(7,29,50,.55)),url("https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1100&q=85") center/cover}
+    .welcome-text{display:flex;flex-direction:column;justify-content:center;padding:46px 40px}
+    .welcome-card h2{white-space:normal;font-size:clamp(26px,3vw,34px);line-height:1.15;margin-bottom:8px}
+    .welcome-lead{margin-bottom:14px;font-size:20px;font-weight:600;color:var(--blue)}
+    .welcome-text p{font-size:16px;line-height:1.7;color:var(--muted)}
+    .welcome-text .welcome-lead{color:var(--blue)}
+    .welcome-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .welcome-close{position:absolute;top:10px;right:12px;z-index:3;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.95);font-size:24px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+    @media(max-width:680px){.welcome-card{grid-template-columns:1fr}.welcome-img{min-height:170px}.welcome-text{padding:28px 24px}}
+
+    /* ===== dropdown menus; banner title replaces the first section's small label ===== */
+    .nav-drop{position:relative;display:inline-flex}
+    .drop-menu{position:absolute;top:100%;left:-14px;z-index:120;display:none;min-width:290px;padding:10px;background:#fff;border:1px solid var(--line);box-shadow:0 22px 50px rgba(11,41,72,.16)}
+    .drop-menu a{display:block;padding:11px 14px;white-space:nowrap}
+    .nav-drop:hover .drop-menu,.nav-drop:focus-within .drop-menu{display:block}
+    .page-hero + section .eyebrow{display:none}
+    @media(max-width:960px){.nav-drop{display:block}.drop-menu{position:static;display:block;min-width:0;padding:0 0 0 14px;border:0;box-shadow:none}.drop-menu a{padding:8px 0}}
+
+  </style>
+</head>
+<body>
+
+<div class="quick-links"><div class="container">
+  <span><a href="https://wa.me/923712136262" target="_blank" rel="noopener">WhatsApp +92 371-2136262</a><a href="https://wa.me/923712136261" target="_blank" rel="noopener">WhatsApp +92 371-2136261</a></span>
+  <span><a href="https://www.instagram.com/global.guidance.hub/" target="_blank" rel="noopener">Instagram</a><a href="mailto:globalguidancehub@gmail.com">globalguidancehub@gmail.com</a></span>
+</div></div>
+
+<header class="site-header" id="top">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html" aria-label="Global Guidance Hub"><img src="assets/global-guidance-hub-logo.png" alt="Global Guidance Hub logo"></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="how-we-guide.html">How We Guide</a>
+      <div class="nav-drop"><a href="areas.html" aria-current="page">Guidance</a><div class="drop-menu"><a href="areas.html">Areas of Guidance</a><a href="universities.html" aria-current="page">Choosing the Right University</a><a href="early-planning.html">Early Academic Planning</a><a href="applications.html">Applications and Admissions</a><a href="resources.html">Guidance and Resources</a></div></div>
+      <a href="destinations.html">Study Destinations</a>
+      <div class="nav-drop"><a href="about.html">About</a><div class="drop-menu"><a href="about.html">About Global Guidance Hub</a><a href="mentors.html">Introducing the Mentors</a><a href="stories.html">Student Journeys</a></div></div>
+      <a class="nav-button" href="contact.html">Talk to a Mentor</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero page-hero"><div class="hero-media" aria-hidden="true"></div><div class="hero-shade" aria-hidden="true"></div><div class="container hero-inner"><div class="hero-copy"><p class="eyebrow">GLOBAL GUIDANCE HUB</p><h1>Choosing the Right University</h1></div></div></section>
+
+  <section class="section stage-section" id="choosing"><div class="container">
+      <div class="section-head  reveal"><p class="eyebrow eyebrow-blue">CHOOSING THE RIGHT UNIVERSITY</p><h2>Finding the Right University Takes More Than Rankings.</h2><p>A university’s reputation can be important, but it should never be the only consideration.</p><p>The right university should make sense academically, financially and personally. It should provide an environment in which you can learn, develop and work towards your goals.</p><p>We help you consider the complete picture.</p></div><div class="stage-grid flow"><article class="stage-card reveal"><span class="card-number">01</span><h3>Academic Fit</h3><p>Does the programme suit your qualifications, interests and strengths?</p></article><article class="stage-card reveal"><span class="card-number">02</span><h3>Course Content</h3><p>Will you enjoy and benefit from what you will be studying?</p></article><article class="stage-card reveal"><span class="card-number">03</span><h3>Learning Environment</h3><p>Does the teaching approach, campus atmosphere and student experience suit you?</p></article><article class="stage-card reveal"><span class="card-number">04</span><h3>Costs and Scholarships</h3><p>What is the overall financial commitment, and which funding opportunities may be available?</p></article><article class="stage-card reveal"><span class="card-number">05</span><h3>Location</h3><p>Can you see yourself living, studying and feeling comfortable there?</p></article><article class="stage-card reveal"><span class="card-number">06</span><h3>Opportunities Beyond the Classroom</h3><p>What opportunities exist for research, internships, practical learning and personal development?</p></article><article class="stage-card reveal"><span class="card-number">07</span><h3>Career and Future Plans</h3><p>How might this degree support your longer-term academic and professional ambitions?</p></article></div>
+      <div class="center reveal"><p>The goal is not simply to find a good university. It is to find the right one for you.</p></div></div></section>
+
+<section class="final-cta"><div class="container reveal"><p class="eyebrow eyebrow-light">CONTACT</p><h2>Every Journey Begins with a Conversation.</h2><a class="button button-white" href="https://wa.me/923712136262?text=Hello%20Global%20Guidance%20Hub%2C%20I%27d%20like%20to%20start%20a%20conversation." target="_blank" rel="noopener">Start a Conversation <span>→</span></a><a class="button button-white" href="contact.html#profile">Explore Your Options <span>→</span></a></div></section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand"><img src="assets/global-guidance-hub-logo.png" alt="Global Guidance Hub logo"><p>Thoughtful educational guidance, academic planning and university exploration.</p><p>Your Journey. Your Choices. Our Guidance.</p></div>
+    <div><h4>Explore</h4><a href="index.html#approach">Our Approach</a><a href="index.html#explore">Your Educational Journey</a><a href="areas.html#areas">Areas of Guidance</a><a href="destinations.html#destinations">Study Destinations</a><a href="resources.html#guidance">Guidance and Resources</a></div>
+    <div><h4>About</h4><a href="about.html#about">Our Story</a><a href="mentors.html#mentors">Meet Your Mentors</a><a href="stories.html#stories">Student Journeys</a><a href="contact.html#contact">Contact Us</a></div>
+    <div><h4>Information</h4><span class="footer-text">Privacy Policy</span><span class="footer-text">Terms &amp; Conditions</span>
+      <h4 class="follow-title">Follow</h4><div class="socials"><a href="https://www.instagram.com/global.guidance.hub/" target="_blank" rel="noopener">Instagram</a></div></div>
+  </div>
+  <div class="container footer-bottom"><span>© <span id="year">2026</span> Global Guidance Hub. All rights reserved.</span></div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/923712136262?text=Hello%20Global%20Guidance%20Hub%2C%20I%20would%20like%20to%20talk%20to%20a%20mentor%20about%20studying%20abroad." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg><span>Chat on WhatsApp</span></a>
+<button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+<script src="script.js"></script>
+
+<script>
+/* ---------- Anchor links: always land on the very top of the section (below the sticky header) ---------- */
+(function () {
+  var hdr = document.querySelector('.site-header');
+  function go(id, smooth) {
+    var el = document.getElementById(id); if (!el) return;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - (hdr ? hdr.offsetHeight : 0) - 4;
+    window.scrollTo({ top: Math.max(0, y), behavior: smooth ? 'smooth' : 'instant' });
+  }
+  function settle(id, tries) {
+    var last = -1, still = 0;
+    (function tick() {
+      var y = window.pageYOffset;
+      if (y === last) still++; else { still = 0; last = y; }
+      if (still < 8) { requestAnimationFrame(tick); return; }
+      var el = document.getElementById(id); if (!el || tries < 1) return;
+      var d = el.getBoundingClientRect().top - ((hdr ? hdr.offsetHeight : 0) + 4);
+      if (Math.abs(d) > 2) { go(id, false); settle(id, tries - 1); }
+    })();
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (!id || !document.getElementById(id)) return;
+    e.preventDefault(); go(id, true);
+    settle(id, 4);   // keep correcting until the page has stopped moving
+  });
+  // Always open at the top of the page, unless the link itself points to a section (e.g. /#about)
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('load', function () {
+    var id = location.hash.slice(1);
+    if (id && document.getElementById(id)) setTimeout(function () { go(id, false); }, 250);
+    else window.scrollTo(0, 0);
+  });
+})();
+</script>
+</body>
+</html>
